@@ -16,8 +16,8 @@ class Name(Field):
 
 class Phone(Field):
     def __init__(self, value=None):
-        if self.validate_phone():
-            super().__init__(value)
+        super().__init__(value)
+        self.validate_phone()
 
 
     def validate_phone(self):
