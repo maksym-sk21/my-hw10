@@ -15,15 +15,10 @@ class Name(Field):
 
 
 class Phone(Field):
-    def __init__(self, value=None):
+    def __init__(self, value):
+        if not value.isdigit() or len(value) != 10:
+            raise ValueError('Invalid phone number format. Please enter 10 digits')
         super().__init__(value)
-        self.validate_phone()
-
-
-    def validate_phone(self):
-        if self.value is not None and not (isinstance(self.value, str) and self.value.isdigit() and len(self.value) == 10):
-            raise ValueError("Invalid phone number format. Please enter 10 digits.")
-        return True
 
 
 
